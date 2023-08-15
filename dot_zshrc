@@ -69,15 +69,12 @@ export CEED_DIR=$HOME/project/micromorph/libCEED
 export ENZYME_LIB=$HOME/local/enzyme/lib/ClangEnzyme-16.so
 
 # Set the list of directories that Zsh searches for programs.
+z4h source $HOME/.zpath.zsh
 path=(
-  $PETSC_BIN(N)
-  /usr/lib/llvm-16/bin(N)
   $HOME/local/{,s}bin(N)
-  $HOME/local/*/bin(N)
-  $HOME/.local/bin(N)
-  /usr/local/texlive/2023/bin/x86_64-linux(N)
+  $HOME/local/*/{,s}bin(N)
+  $HOME/.local/{,s}bin(N)
   /opt/{homebrew,local}/{,s}bin(N)
-  $CUDA_DIR/bin(N)
   /usr/local/{,s}bin(N)
   '/mnt/c/Users/zacha/AppData/Local/Programs/Microsoft\ VS\ Code/bin'(N)
   $path
@@ -91,6 +88,7 @@ export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH
 
 # Export environment variables.
 export GPG_TTY=$TTY
+export EDITOR=code
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
