@@ -891,14 +891,33 @@ typeset -g POWERLEVEL9K_DIR_CLASSES=(
 
   ################################[ battery: internal battery ]#################################
   # Show battery in red when it's below this level and not connected to power supply.
-  typeset -g POWERLEVEL9K_BATTERY_LOW_THRESHOLD=20
-  typeset -g POWERLEVEL9K_BATTERY_LOW_FOREGROUND=210
   # Show battery in green when it's charging or fully charged.
-  typeset -g POWERLEVEL9K_BATTERY_{CHARGING,CHARGED}_FOREGROUND=156
-  # Show battery in yellow when it's discharging.
-  typeset -g POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND=0
+  typeset -g POWERLEVEL9K_BATTERY_FOREGROUND=0
   # Battery pictograms going from low to high level of charge.
-  typeset -g POWERLEVEL9K_BATTERY_STAGES='\UF008E\UF007A\UF007B\UF007C\UF007D\UF007E\UF007F\UF0080\UF0081\UF0082\UF0079'
+  typeset -g POWERLEVEL9K_BATTERY_DISCONNECTED_STAGES=(
+    '%F{124}󰁺'
+    '%F{124}󰁻'
+    '%F{220}󰁼'
+    '%F{220}󰁽'
+    '%F{220}󰁾'
+    '%K{220}󰁿'
+    '%F{28}󰂀'
+    '%F{28}󰂁'
+    '%F{28}󰂂'
+    '%F{28}󰁹'
+  )
+  typeset -g POWERLEVEL9K_BATTERY_STAGES=(
+    '%F{124}󰁺󱐋'
+    '%F{124}󰁻󱐋'
+    '%F{220}󰁼󱐋'
+    '%F{220}󰁽󱐋'
+    '%F{220}󰁾󱐋'
+    '%F{220}󰁿󱐋'
+    '%F{28}󰂀󱐋'
+    '%F{28}󰂁󱐋'
+    '%F{28}󰂂󱐋'
+    '%F{28}󰁹󱐋'
+  )
   # Don't show the remaining time to charge/discharge.
   typeset -g POWERLEVEL9K_BATTERY_VERBOSE=false
   typeset -g POWERLEVEL9K_BATTERY_BACKGROUND=7
