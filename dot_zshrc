@@ -58,6 +58,7 @@ z4h install ohmyzsh/ohmyzsh || return
 # perform network I/O must be done above. Everything else is best done below.
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+typeset -g USERNAME="${USERNAME:$USER}"
 z4h init || return
 
 # Extend PATH.
