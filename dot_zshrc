@@ -132,6 +132,7 @@ git_prune_local() {
 # Define aliases.
 alias tree='tree -a -I .git'
 alias gco='git checkout'
+alias ducks='du -cksh -x --exclude "/mnt/*" * | sort -hr | head -n 15'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
