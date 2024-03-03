@@ -91,7 +91,7 @@ export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH
 
 # Export environment variables.
 export GPG_TTY=$TTY
-export EDITOR=code
+export EDITOR=vim
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -133,7 +133,10 @@ git_prune_local() {
 alias tree='tree -a -I .git'
 alias gco='git checkout'
 alias ducks='du -cksh -x --exclude "/mnt/*" * | sort -hr | head -n 15'
-
+if command -v bat &> /dev/null
+then
+  alias cat='bat'
+fi 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
 
