@@ -68,7 +68,7 @@ export PETSC_BIN=$PETSC_DIR/$PETSC_ARCH/bin
 export CUDA_DIR=/usr/local/cuda
 export CEED_DIR=$HOME/project/micromorph/libCEED
 export ENZYME_LIB=$HOME/local/enzyme/lib/ClangEnzyme-17.so
-
+export LSAN_OPTIONS="suppressions=$HOME/.config/LSAN.supp,print_suppressions=0"
 # Set the list of directories that Zsh searches for programs.
 [[ -f $HOME/.zpath.zsh ]] && z4h source $HOME/.zpath.zsh
 path=(
@@ -145,3 +145,5 @@ setopt glob_dots     # no special treatment for file names with a leading dot
 # setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 eval "$(zoxide init --cmd cd zsh)"
+
+if [ -e /etc/profile.d/nix.sh ]; then source /etc/profile.d/nix.sh; fi
