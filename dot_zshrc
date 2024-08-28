@@ -7,7 +7,6 @@
 zstyle ':z4h:'                  auto-update            no
 zstyle ':z4h:'                  auto-update-days       28
 zstyle ':z4h:*'                 channel                testing
-zstyle ':z4h:autosuggestions'   forward-char           partial-accept
 zstyle ':z4h:autosuggestions'   end-of-line            partial-accept
 zstyle ':z4h:term-title:ssh'    precmd                 ${${${Z4H_SSH##*:}//\%/%%}:-%m}': %~'
 zstyle ':z4h:term-title:ssh'    preexec                ${${${Z4H_SSH##*:}//\%/%%}:-%m}': ${1//\%/%%}'
@@ -50,12 +49,12 @@ zstyle ':z4h:direnv:success' notify 'yes'
 zstyle ':z4h:ssh:*.cs.colorado.edu' enable 'yes'
 zstyle ':z4h:ssh:*.colorado.edu'    enable 'yes'
 # The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:*.llnl.gov'        enable 'no'
-zstyle ':z4h:ssh:*'                 enable 'no'
+zstyle ':z4h:ssh:*.llnl.gov'        enable 'yes'
+zstyle ':z4h:ssh:*'                 enable 'yes'
 
 # Send these files over to the remote host when connecting over SSH to the
 # enabled hosts.
-zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
+# zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
 
 # Start ssh-agent if it's not running yet.
 zstyle ':z4h:ssh-agent:' start yes
@@ -81,10 +80,6 @@ zstyle ':z4h:fzf-dir-history'                fzf-bindings       tab:repeat
 zstyle ':z4h:fzf-complete'                   fzf-bindings       tab:repeat
 
 z4h init || return
-
-if [[ "$(hostname)" = "tioga"* || "$(hostname)" = "lassen"* ]]; then
-  umask 0027
-fi
 
 # Extend PATH.
 [[ -f $HOME/.zpath.zsh ]] && z4h source $HOME/.zpath.zsh
@@ -151,6 +146,13 @@ alias ls="${aliases[ls]:-ls} -A"
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
 # setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 if hash zoxide 2>/dev/null; then
